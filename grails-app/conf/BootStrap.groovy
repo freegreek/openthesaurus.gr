@@ -24,9 +24,9 @@ class BootStrap {
            log.info("Creating language 'en'")
            new Language("English", "en").save()
        }
-       if (!Language.findByShortForm("de")) {
-           log.info("Creating language 'de'")
-           new Language("German", "de").save()
+       if (!Language.findByShortForm("el")) {
+           log.info("Creating language 'el'")
+           new Language("Greek", "el").save()
        }
        // create word forms:
        if (!WordGrammar.findByForm("undefined")) {
@@ -48,15 +48,6 @@ class BootStrap {
          Category cat = new Category("other")
          cat.isDisabled = false
          cat.save()
-       }
-       if (!TermLinkType.findByLinkName("Antonym")) {
-         // add default section so there's at least one section available:
-         TermLinkType termLinkType = new TermLinkType("Antonym")
-         termLinkType.otherDirectionLinkName = "Antonym"
-         termLinkType.verbName = "ist das Antonym von"
-         boolean created = termLinkType.save()
-         assert(created)
-         log.info("Created " + termLinkType)
        }
      }
      
