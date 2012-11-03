@@ -15,8 +15,7 @@
           <textarea rows="20" cols="80" name="text"></textarea>
           <br />
           <br />
-          <g:submitButton name="Go" value="Suchen" />
+          <g:submitButton name="Go" value="${message(code:'missingwords.search')}/>
         </g:form>
-          
     </body>
 </html>

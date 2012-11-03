@@ -129,18 +129,18 @@
                                         <div id="termId_${t.id}">
 
                                             <g:if test="${session.user}">
-                                              <a href="#" onclick="deleteItem('termId', '${t.id}');return false;"><img 
+                                              <a href="#" onclick="deleteItem('termId', '${t.id}');return false;"><img
                                                 align="top" src="${resource(dir:'images',file:'delete2.png')}" alt="delete icon" title="${message(code:'edit.select.to.delete')}"/></a>
                                             </g:if>
                                             <g:else>
                                               <img align="top" src="${resource(dir:'images',file:'delete2_inactive.png')}" alt="delete icon"/>
                                             </g:else>
-    
+
                                             <g:link class="termMetaInfo otherMeaningSearchLink" controller='term' action='edit' id='${t.id}'>
                                                 [<g:message code='edit.edit.term'/>]</g:link>
 
                                             <strong>${t.toString()?.encodeAsHTML()}</strong>
-    
+
                                             <g:if test="${t.isAcronym}">
                                                 <span class="termMetaInfo">[<g:message code='edit.acronym'/>]</span>
                                             </g:if>
@@ -157,7 +157,7 @@
 
                                             <g:link title="${message(code:'edit.find.all.meanings', args: [t.word.encodeAsHTML()])}"
                                                 class="termMetaInfo otherMeaningSearchLink" action="search" params="[q : t.word]">[${termCount}]</g:link>
-                                        
+
                                         </div>
 
                                         <g:if test="${t.userComment}">
@@ -172,20 +172,20 @@
                                         <g:if test="${termLinkInfos.size() > 0}">
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                           <g:each var='termLinkInfo' in='${termLinkInfos}'>
-                                            ${termLinkInfo.getLinkName().encodeAsHTML()}: <g:link controller="synset" 
+                                            ${termLinkInfo.getLinkName().encodeAsHTML()}: <g:link controller="synset"
                                                 action="edit" id="${termLinkInfo.getTerm2().synset.id}">${termLinkInfo.getTerm2().encodeAsHTML()}</g:link>
                                           </g:each>
                                         </g:if>
 
                                     </li>
                                 </g:each>
-                                
+
                                 <li class="checkboxList" style="margin-top:10px">
                                   <g:if test="${session.user}">
                                     <div id="newTermLink">
                                         <a href="#" onclick="javascript:showNewTerm();return false;"><img align="top" src="${createLinkTo(dir:'images',file:'plus.png')}" alt="Plus"/>&nbsp;<g:message code='edit.add.terms'/></a>
                                     </div>
-    
+
                                     <% int i = 0; %>
                                     <div id="newTerm" style="display:none">
                                         <g:while test="${i < Integer.parseInt(grailsApplication.config.thesaurus.maxNewTerms)}">
@@ -229,18 +229,18 @@
                                 <g:if test="${synset.categoryLinks.size() > 0}">
                                   <g:each var='catLink' in='${synset.categoryLinks.sort()}'>
                                       <li class="checkboxList">
-    
+
                                         <input type="hidden" id="delete_catLinkId_${catLink.id}" name="delete_catLinkId_${catLink.id}" value=""/>
                                         <div id="catLinkId_${catLink.id}">
-    
+
                                             <g:if test="${session.user}">
-                                              <a href="#" onclick="deleteItem('catLinkId', '${catLink.id}');return false;"><img 
+                                              <a href="#" onclick="deleteItem('catLinkId', '${catLink.id}');return false;"><img
                                                 align="top" src="${resource(dir:'images',file:'delete2.png')}" alt="delete icon" title="${message(code:'edit.select.to.delete.category')}"/></a>
                                             </g:if>
                                             <g:else>
                                               <img align="top" src="${resource(dir:'images',file:'delete2_inactive.png')}" alt="delete icon"/>
                                             </g:else>
-    
+
                                             ${catLink.category}
                                             <g:link controller="term" action="list" params="${[categoryId:catLink.category.id]}"><g:message code="edit.show.category.terms"/></g:link>
                                             <g:if test="${catLink.category.categoryType}">
@@ -249,7 +249,7 @@
                                         </div>
                                       </li>
                                   </g:each>
-                              
+
                                 </g:if>
 
                                   <li class="checkboxList" ${synset.categoryLinks.size() > 0 ? 'style="margin-top:10px"' : ''}>
@@ -292,14 +292,14 @@
                             <%
                             Set displayedSynsets = new HashSet()
                             %>
-                            <g:render template="link" model="[title:'Oberbegriffe', linkTypeName:'Oberbegriff',
+                            <g:render template="link" model="[title:message(code:'edit.link.preambles'), linkTypeName:message(code:'edit.link.preambles'),
                                 synset:synset, synsetLinks:synsetLinks, showAddLink:true, displayedSynsets: displayedSynsets]" />
 
-                            <g:render template="link" model="[title:'Unterbegriffe', linkTypeName:'Unterbegriff',
+                            <g:render template="link" model="[title:message(code:'edit.link.terms'), linkTypeName:message(code:'edit.link.terms'),
                                 synset:synset, synsetLinks:synsetLinks, showAddLink:false, displayedSynsets: displayedSynsets,
                                 reverseLink:true]" />
 
-                            <g:render template="link" model="[title:'Assoziationen', linkTypeName:'Assoziation',
+                            <g:render template="link" model="[title:message(code:'edit.link.associations'), linkTypeName:message(code:'edit.link.associations'),
                                 synset:synset, synsetLinks:synsetLinks, showAddLink:true, displayedSynsets: displayedSynsets]" />
 
                         </g:if>
@@ -354,7 +354,7 @@
                             <td>
                                 <g:if test="${!session.user}">
                                       <g:link controller="user" action="login" class="link"
-                                            params="${linkParams}"><img align="top" src="${createLinkTo(dir:'images',file:'forum-bubble.png')}" alt="Forum-Icon" /> Anmelden und diesen Eintrag verbessern</g:link>
+                                            params="${linkParams}"><img align="top" src="${createLinkTo(dir:'images',file:'forum-bubble.png')}" alt="Forum-Icon" /> <g:message code='edit.login.to.improve'/> </g:link>
                                 </g:if>
                                 <br/>
                                 <g:render template="forumlink" />
@@ -409,11 +409,11 @@
                       </tr>
                   </g:each>
               </table>
-              
+
               <div class="paginateButtons">
                   <g:paginate fragment="history" total="${eventListCount}" id="${params.id}" />
               </div>
-              
+
             </div>
         </g:if>
 

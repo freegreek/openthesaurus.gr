@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title><g:message code="user.register.title"/></title>         
+        <title><g:message code="user.register.title"/></title>
     </head>
     <body>
 
@@ -22,7 +22,7 @@
               <g:renderErrors bean="${user}" />
           </div>
         </g:hasErrors>
-    
+
         <g:form action="doRegister" method="post" name="loginform">
             <div class="dialog">
                 <table>
@@ -100,7 +100,7 @@
                         <g:if test="${ThesaurusConfigurationEntry.findByKey('captcha.question')}">
                             <tr class='prop'>
                                 <td valign='top' class='name' colspan="2">
-                                    <label for='captcha'><b>Sicherheitsbabfrage:</b></label>
+                                    <label for='captcha'><b><g:message code="user.register.form.captcha"/>:</b></label>
                                 </td>
                             </tr>
                             <tr>
@@ -138,12 +138,12 @@
                 </table>
             </div>
         </g:form>
-        
+
         <script type="text/javascript">
         <!--
             document.loginform.userId.focus();
         // -->
         </script>
-        
+
     </body>
 </html>

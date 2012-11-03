@@ -39,7 +39,7 @@ class RedirectController extends BaseController {
      // remove the useless "x" and "y" coordinates caused by the graphical submit button
      String query = params.q
      if (!query) {
-       query = "Suchwort"
+       query = message(code:'homepage.search.default.term')
      }
      redirect(controller:'synset', action:'search', params:[q: query])
    }

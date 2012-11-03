@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title><g:message code="changelist.title"/></title>
+        <meta name="description" content=""/>
         <meta name="robots" content="noindex, nofollow" />
     </head>
     <body>

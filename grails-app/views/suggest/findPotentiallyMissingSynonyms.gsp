@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>Unbekannte Wörter - OpenThesaurus</title>
+        <title><g:message code='missingwords.headline'/> - OpenThesaurus</title>
         <meta name="layout" content="main" />
     </head>
     <body>
 
         <hr />
 
-        <h2>Unbekannte Wörter</h2>
+        <h2><g:message code='missingwords.headline'/></h2>
 
         <ul>
           <g:each in="${unknownTerms}" var="term" status="i">
@@ -23,7 +23,7 @@
             </li>
           </g:each>
         </ul>
-          
+
         </div>
 
     </body>

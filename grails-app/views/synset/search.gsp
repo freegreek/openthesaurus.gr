@@ -46,7 +46,7 @@
                   </g:if>
 
                   <hr style="margin-top:20px" />
-                  
+
                   <g:render template="partialmatches"/>
 
                   <hr style="margin-top:20px" />
@@ -114,7 +114,7 @@
                   <h2><g:message code="result.external.search" args="${[params.q.encodeAsHTML()]}"/></h2>
 
                   <g:render template="/external_links" model="${[q:params.q]}"/>
-                  
+
                 </td>
               </tr>
             </table>

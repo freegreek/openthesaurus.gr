@@ -12,7 +12,7 @@
             <g:message code="result.ajax.no.exact.matches.for" args="${[params.q.toString()?.encodeAsHTML()]}"/>
             <g:if test="${mostSimilarTerm}">
                 <g:set var="simTerm" value="${mostSimilarTerm.term}"/>
-                - meinten Sie <g:link url="${createLinkTo(dir:'synonyme')}/${simTerm.encodeAsURL()}">${simTerm.encodeAsHTML()}</g:link>?
+                - "${message(code:'did.you.mean')}" <g:link url="${createLinkTo(dir:'synonyme')}/${simTerm.encodeAsURL()}">${simTerm.encodeAsHTML()}</g:link>?
             </g:if>
         </div>
     </g:if>
