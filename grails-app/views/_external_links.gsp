@@ -1,30 +1,21 @@
-
-<g:set var="latin1Query" value="${URLEncoder.encode(q, 'latin1')}"/>
-
-<%--
-	<li><a href="http://de.wikipedia.org/wiki/Spezial:Search?search=${q.encodeAsURL()}&amp;go=Eintrag">Wikipedia</a>
-		<span class="d">&middot;</span> <a href="http://de.wiktionary.org/wiki/Spezial:Search?search=${q.encodeAsURL()}&amp;go=Eintrag">Wiktionary</a></li>
---%>
-
 <p style="line-height: 175%">
 
-    <a href="http://formulierung-mit-stil.de/?fsearched=${latin1Query}&amp;faction=find" title="Formulierungen und Varianten">Formulierung-mit-Stil.de</a>
+    <a href="http://el.wikipedia.org/w/index.php?search=${q.encodeAsURL()}&amp;go=Go">Βικιπαίδεια</a>
 
     <span class="d">&middot;</span>
-    <a href="http://www.canoo.net/services/Controller?input=${latin1Query}&amp;service=inflection">Wortformen von Canoo.net</a>
+    <a href="http://el.wiktionary.org/w/index.php?search=${q.encodeAsURL()}&amp;go=Go">Βικιλεξικό</a>
 
     <br/>
-    <a href="http://dict.tu-chemnitz.de/dings.cgi?lang=de&amp;noframes=1&amp;service=&amp;query=${latin1Query}&amp;optword=1&amp;optcase=1&amp;opterrors=0&amp;optpro=0&amp;style=&amp;dlink=self"
-     >Beolingus Deutsch-Englisch</a>
+    <a href="http://www.greek-language.gr/greekLang/modern_greek/tools/lexica/search.html?lq=${q.encodeAsURL()}&amp;sin=all"
+      title="Πύλη Ελληνικής Γλώσσας"
+     >Λεξικά</a>
 
     <%--
     <span class="d">&middot;</span>
-    <a href="http://www.dict.cc/?s=${q.encodeAsURL()}" title="Englisch-Deutsch">dict.cc</a>
-    --%>
+    <a href="http://lexicon.pathfinder.gr/?lookup=${q.encodeAsURL()}" title="Ελληνικά-Αγγλικά">pathfinder lexicon</a>
 
     <%--
     <span class="d">&middot;</span>
-    <a href="http://www.google.de/search?q=${q.encodeAsURL()}&amp;lr=lang_de" title="Suche im Web">Google</a>
-    --%>
+    <a href="http://www.google.gr/search?q=${q.encodeAsURL()}&amp;lr=lang_el" title="Αναζήτηση στο Web">Google</a>
 
 </p>
