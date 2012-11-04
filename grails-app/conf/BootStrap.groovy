@@ -3,7 +3,7 @@ import com.vionto.vithesaurus.*
 class BootStrap {
 
      def init = { servletContext ->
-       final String ADMIN_USERID = "admin"
+       final String ADMIN_USERID = "admin@openthesaurus.gr"
        final String ADMIN_PASSWORD = UserController.md5sum("admin", UserController.DEFAULT_SALT)
        final String ADMIN_PERM = "admin"
        // create a default user:
@@ -15,6 +15,7 @@ class BootStrap {
          if (!user.validate()) {
            log.error("User validation failed: ${user.errors}")
          }
+	 user.realName = "Admin"
          user.save()
        } else {
          log.info("Default admin user already exists")
