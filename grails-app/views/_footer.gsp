@@ -32,11 +32,8 @@
           <li><g:link controller="userEvent" action="list"><g:message code="changelog"/></g:link></li>
           <li><g:link controller="statistics"><g:message code="statistics"/></g:link></li>
 
-          <li style="margin-top:16px"><g:link controller="woerter" action="listen"><g:message code="homepage.wordlists"/></g:link></li>
           <li><g:link controller="about" action="api"><g:message code="homepage.api"/></g:link></li>
           <li><g:link controller="about" action="download"><g:message code="homepage.download"/></g:link></li>
-
-          <li style="margin-top:16px"><g:link controller="about" action="imprint"><g:message code="homepage.imprint"/></g:link></li>
         </ul>
       </td>
       <td width="130">
