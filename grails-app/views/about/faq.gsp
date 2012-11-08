@@ -8,115 +8,80 @@
     <body>
 
         <hr />
-
 		<h2><g:message code="faq.title" /></h2>
 
-        <%--
-        <table style="border:0px;width:100%">
-        <tr>
-        	<td>
-        		<ul>
-        			<li><a href="#was">Was ist ein Synonym?</a></li>
-        			<li><a href="#textverarbeitungen">In welche Textverarbeitungen kann ich OpenThesaurus direkt integrieren? </a></li>
-        			<li><a href="#aenderungen">Was soll ich bei meinen Änderungen an OpenThesaurus beachten?</a></li>
-        			<li><a href="#english">I'm looking for an English thesaurus. </a></li>
-        		</ul>
-        	</td>
-        	<td>
-		        <g:render template="/ads/faq_right"/>
-        	</td>
-        </tr>
-        </table>
-        --%>
-        
 		<div class="faqitem">
 			<div class="question">
-				<a name="was">Was ist ein Synonym?</a>
+				<a name="Τι">Τι είναι Συνώνυμο;</a>
 			</div>
 			<div class="answer">
-				<p>Wenn zwei oder mehr Wörter in einem bestimmten Kontext
-					die gleiche Bedeutung haben, sind sie Synonyme. Beispiele:</p>
+				<p>Αν δύο ή περισσότερες λέξεις ή φράσεις έχουν την ίδια (ή <a href="http://www.greek-language.gr/greekLang/modern_greek/tools/lexica/glossology/show.html?id=158">σχεδόν την ίδια</a>) σημασία και εμφανίζονται στα ίδια γλωσσικά περιβάλλοντα, είναι συνώνυμες. Παραδείγματα:</p>
 					
 					<ul>
-						<li><span class="bsp">Adresse</span>, <span class="bsp">Anschrift</span></li>
+						<li><span class="bsp">αυτοκίνητο</span>, <span class="bsp">αμάξι</span></li>
 				
-						<li><span class="bsp">gelingen</span>, <span class="bsp">glücken</span>, <span class="bsp">klappen</span></li>
-						<li><span class="bsp">oft</span>, <span class="bsp">häufig</span></li>
+						<li><span class="bsp">καταφέρνω</span>, <span class="bsp">επιτυγχάνω</span>, <span class="bsp">κατορθώνω</span></li>
+						<li><span class="bsp">ανύπαντρος</span>, <span class="bsp">εργένης</span></li>
 					</ul>
 					
-					<p>Ob Wörter Synonyme sind, lässt sich einfach durch einen
-					ausgedachten Satz wie <span class="bsp">Ich gehe <em>oft</em> ins Kino</span> überprüfen.
-					Hier lässt sich <span class="bsp">oft</span> durch <span class="bsp">häufig</span> ersetzen, ohne dass
-					der Satz dadurch eine andere Bedeutung bekommt. Also sind
-					<span class="bsp">oft</span> und <span class="bsp">häufig</span> Synonyme.</p>
-				
-					
-					<p>Folgende Wortpaare sind dagegen <em>keine</em> Synonyme:</p>
-					
+					<p>Το αν δύο λέξεις είναι συνώνυμες μπορεί να ελεγχθεί εύκολα κατασκευάζοντας μια πρόταση,
+					π.χ., <span class="bsp">Πηγαίνω στη δουλειά με το <em>αυτοκίνητό</em> μου</span>.
+					Εδώ μπορούμε να αντικαταστήσουμε το <span class="bsp">αυτοκίνητο</span> με το <span class="bsp">αμάξι</span> χωρίς
+					να αλλάξει η σημασία της πρότασης. Άρα οι λέξεις
+					<span class="bsp">αυτοκίνητο</span> και <span class="bsp">αμάξι</span> είναι συνώνυμες.</p>
+
+					<p>Αντίθετα τα παρακάτω <em>δεν</em> είναι συνώνυμα:</p>
+
 					<ul>
-						<li><span class="bsp">warm</span>, <span class="bsp">heiß</span> (die Bedeutung unterscheidet sich zu sehr)</li>
-						<li><span class="bsp">Haus</span>, <span class="bsp">Gebäude</span> (Haus ist ein Unterbegriff von Gebäude, kein Synonym)</li>
+						<li><span class="bsp">ζεστός</span>, <span class="bsp">καυτός</span> (η διαφορά είναι στο "πόσο")</li>
+						<li><span class="bsp">σπίτι</span>, <span class="bsp">κτίριο</span> (Το σπίτι είναι υπώνυμο του κτιρίου, όχι συνώνυμο)</li>
 				
 					</ul>
-					
-					<p>Die Synonyme einer Bedeutung bilden eine <em>Synonymgruppe</em>.
-					Ein Wort mit verschiedenen Bedeutungen  -- wie z.B. <span class="bsp">Bank</span> --
-					taucht in so vielen Synonymgruppen auf, wie es verschiedene Bedeutungen
-					hat, z.B.:</p>
-					
-					<p>Synonymgruppe 1: <span class="bsp">Bank, Kreditinstitut</span><br />
-					Synonymgruppe 2: <span class="bsp">Bank, Sitzbank</span></p>				
+
+					<p>Τα συνώνυμα που απαρτίζουν μια έννοια σχηματίζουν μία <em>Ομάδα Συνωνύμων</em>. Μια λέξη με πολλαπλές σημασίες, όπως π.χ., 
+					η <span class="bsp">"Τράπεζα"</span> --
+					συμμετέχει σε τόσες ομάδες συνωνύμων όσες και οι σημασίες της
+					π.χ.:</p>
+
+					<p>Ομάδα συνωνύμων 1: <span class="bsp">Τράπεζα, πιστωτικό ίδρυμα</span><br />
+					Ομάδα συνωνύμων 2: <span class="bsp">Τράπεζα, είδος τραπεζιού</span></p>				
 			</div>
 		</div>
 
 		<div class="faqitem">
       <img src="${createLinkTo(dir:'images',file:message(code:'hr_light.png'))}" style="width:100%;height:2px;margin-top:20px;" alt="Trennlinie"/>
 			<div class="question">
-				<a name="textverarbeitungen">In welche Textverarbeitungen kann ich OpenThesaurus direkt integrieren?</a>
+				<a name="Επεξεργαστές Κειμένου">Σε ποιούς επεξεργαστές κειμένου μπορώ να χρησιμοποιήσω απευθείας το λεξικό του OpenThesaurus.gr;</a>
 			</div>
 			<div class="answer">
-			OpenThesaurus funktioniert mit <a href="http://www.openoffice.org">OpenOffice.org</a> /
-                <a href="http://www.documentfoundation.org/download/">LibreOffice</a> und
-				<a href="http://www.papyrus.de">Papyrus</a> und wird dort bereits mitgeliefert.
+			Το λεξικό του OpenThesaurus.gr δουλεύει με τα <a href="http://www.openoffice.org">OpenOffice.org</a> /
+                <a href="http://www.documentfoundation.org/download/">LibreOffice</a> και
+				<a href="http://www.papyrus.de">Papyrus</a> στα οποία και συμπεριλαμβάνεται.
 			</div>
 		</div>
 
 		<div class="faqitem">
       <img src="${createLinkTo(dir:'images',file:message(code:'hr_light.png'))}" style="width:100%;height:2px;margin-top:20px;" alt="Trennlinie"/>
 			<div class="question">
-				<a name="aenderungen">Was soll ich bei meinen Änderungen an OpenThesaurus beachten?</a>
+				<a name="αλλαγές">Τι πρέπει να προσέξω στις παρεμβάσεις μου στον OpenThesaurus.gr;</a>
 			</div>
 			<div class="answer">
 				<ul>
-					<li>Keine Einträge von anderen Wörterbuch/Thesaurus-Seiten systematisch übernehmen</li>
-					<li>Die neue Rechtschreibung benutzen. Sind zwei Schreibweisen
-						erlaubt, sollen auch beide eingegeben werden.</li>
-					<li>Keine extrem seltenen Begriffe oder "Privatsynonyme" einfügen</li>
-					<li>Nur Grundformen einfügen, keine Beugungen.
-						Beispiele:<br />
-						okay: <span class="bsp">laufen</span>, aber nicht: <span class="bsp">lief</span>, <span class="bsp">läufst</span>, ...<br />
-						okay: <span class="bsp">Haus</span>, aber nicht: <span class="bsp">Häuser</span>
+					<li>Να μην υιοθετούνται μαζικά καταχωρήσεις από άλλα λεξικά ή  θησαυρούς</li>
+					<li>Να χρησιμοποιείται η νέα ελληνική γλώσσα. Όπου υπάρχουν δύο εξίσου αποδεκτοί τρόποι γραφής να δίδονται και οι δύο.</li>
+					<li>Να μην εισάγονται ιδιαίτερα σπάνιοι όροι</li>
+					<li>Να εισάγεται μόνο η αρχική μορφή μιας λέξης, όχι οι κλίσεις.
+						Παραδείγματα:<br />
+						Αποδεκτό: <span class="bsp">τρέχω</span>, αλλά όχι: <span class="bsp">έτρεξα</span>, <span class="bsp">τρέχεις</span>, ...<br />
+					        Αποδεκτό: <span class="bsp">Σπίτι</span>, αλλά όχι: <span class="bsp">Σπίτια</span>
 					</li>
-					<li>Veraltete Wörter bitte entsprechend kennzeichnen, d.h.
-						<span class="bsp">(veraltet)</span> dahinter schreiben.</li>
-					<li>Regionale Wörter bitte mit <span class="bsp">(regional)</span> kennzeichnen.
-						Österreichische Wörter mit <span class="bsp">(österr.)</span>,
-						schweizerische mit <span class="bsp">(schweiz.)</span> kennzeichnen.</li>
-					<li>Fremdwörter können durchaus hinzugefügt werden.
-						Beispiel: <span class="bsp">Appendix, Blinddarm</span></li>
+					<li>Να επισημαίνονται αναλόγως οι λέξεις της καθαρεύουσας δηλ να προστίθεται το
+						<span class="bsp">(καθαρεύουσα)</span> στα δεξιά τους.</li>
+					<li>Να επισημαίνονται οι λέξεις που ανήκουν σε τοπικές διαλέκτους, δηλ να προστίθεται το
+                                            <span class="bsp">(τοπική)</span> στα δεξιά τους.
 				</ul>
 			</div>
 		</div>
-
-		<!-- 
-		<div class="faqitem">
-			<div class="question">
-			Wie funktioniert die Sache mit den Ober- und Unterbegriffen?
-			</div>
-			<div class="answer">
-			</div>
-		</div>
-		 -->
 
 		<div class="faqitem">
       <img src="${createLinkTo(dir:'images',file:message(code:'hr_light.png'))}" style="width:100%;height:2px;margin-top:20px;" alt="Trennlinie"/>
@@ -138,8 +103,5 @@
 			</div>
 		</div>
 		 --%>
-		 
-	<g:render template="/ads/faq_bottom"/>
-
     </body>
 </html>
