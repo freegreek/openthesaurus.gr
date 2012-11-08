@@ -12,7 +12,7 @@
 
     <%--
     <span class="d">&middot;</span>
-    <a href="http://lexicon.pathfinder.gr/?lookup=${q.encodeAsURL()}" title="Ελληνικά-Αγγλικά">pathfinder lexicon</a>
+    <a href="http://lexicon.pathfinder.gr/?lookup=${q.encodeAsIsoURL()}" title="Ελληνικά-Αγγλικά">pathfinder lexicon</a>
 
     <%--
     <span class="d">&middot;</span>
