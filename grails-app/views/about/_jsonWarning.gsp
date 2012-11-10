@@ -1,2 +1,3 @@
-<p><strong>Hinweis: die JSON-API kann sich noch ändern. Wer sie außer zu Testzwecken nutzen
- möchte, sollte vorher mit feedback<span>@</span>openthesaurus.de Kontakt aufnehmen.</strong></p>
+<p><strong>Σημείωση: το JSON API μπορεί να τροποποιηθεί. Όποιος επιθυμεί να το χρησιμοποιήσει
+για οτιδήποτε εκτός από δοκιμές παρακαλείται να το δηλώσει στο feedback<span>στο</span>openthesaurus.gr
+ώστε να μπορούμε να ειδοποιούμε έγκαιρα για τυχόν αλλαγές.</strong></p>

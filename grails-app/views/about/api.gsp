@@ -4,46 +4,45 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title><g:message code="api.title" /></title>
-        <meta name="description" content="Beschreibung, wie Daten von OpenThesaurus über eine HTTP-Schnittstelle abgefragt werden können."/>
+        <meta name="description" content="Περιγραφή του πώς λειτουργεί η πρόσβαση στα δεδομένα του openthesaurus.gr μέσω API"/>
     </head>
     <body>
 
         <hr />
 
-        <h2>Webservice/API-Zugriff</h2>
-        
-        <ul>
-          <li><a href="#allgemeines">Allgemeines</a></li>
-          <li><a href="#xml">Suchanfrage für XML</a></li>
-          <li><a href="#json">Suchanfrage für JSON</a></li>
-          <li><a href="#jsonp">Suchanfrage für JSONP</a></li>
-          <li><a href="#optionen">Optionen</a></li>
-          <li><a href="#probleme">Bekannte Probleme</a></li>
-          <li><a href="#limits">Anfrage-Limitierung</a></li>
-        </ul>
-        
-		<h2><a name="allgemeines">Allgemeines</a></h2>
-		
-		<p>Viele Daten dieser Website können direkt über eine HTTP-Schnittstelle
-		abgefragt werden. Bisher wird die Suche nach Wörtern, Teilwörtern und nach ähnlich geschriebenen Wörtern
-		unterstützt. Noch nicht unterstützt wird die Wikipedia/Wiktionary-Suche.</p>
-		
-		<p><strong>Hinweis: wer die API über reines Testen hinaus benutzt, sollte sich bitte vorher bei
-		<i>feedback <span>at</span> openthesaurus.de</i> melden. Nur so können wir rechtzeitig alle Nutzer kontaktieren,
-		um zum Beispiel über mögliche Änderungen am Ausgabeformat zu informieren.</strong></p>
-		
-		<h2><a name="xml">Suchanfrage für XML</a></h2>
-		
-		<p>Mit der folgenden HTTP-Anfrage via GET können alle Synonymgruppen,
-		die das Wort <span class="bsp">test</span> beinhalten, abgefragt werden:</p>
-		
-		<pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=test&amp;format=text/xml">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>test</strong>&amp;format=text/xml</a></pre>
+        <h2>Πρόσβαση μέσω API (web-service)</h2>
 
-        <p>Kommt im Suchwort ein Sonderzeichen vor, muss es mit UTF-8 URL-kodiert werden (z.B. wird <tt>hören</tt> zu <tt>h%C3%B6ren</tt>).</p>
+        <ul>
+          <li><a href="#general">Γενικά</a></li>
+          <li><a href="#xml">Αναζήτηση για XML</a></li>
+          <li><a href="#json">Αναζήτηση για JSON</a></li>
+          <li><a href="#jsonp">Αναζήτηση για JSONP</a></li>
+          <li><a href="#options">Επιλογές</a></li>
+          <li><a href="#limits">Περιορισμοί Χρήσης</a></li>
+        </ul>
+
+		<h2><a name="general">Γενικά</a></h2>
+
+		<p>Πολλά από τα δεδομένα αυτής της σελίδας είναι διαθέσιμα προς αναζήτηση απευθείας μέσω HTTP API.
+                   Προς το παρόν υποστηρίζεται η αναζήτηση λέξεων, συνθετικών μιας λέξης και λέξεων με παρόμοια
+                   ορθογραφία. Η αναζήτηση σε Wikipedia / Wiktionary δεν υποστηρίζεται ακόμα.</p>
+
+		<p><strong>Οδηγία: όποιος σχεδιάζει να χρησιμοποιήσει το API καλό θα είναι να ενημερώνει
+                πρώτα σχετικά, στη διεύθυνση <i>feedback <span>στο</span> openthesaurus.gr</i>. Μόνο έτσι θα
+                μπορούμε να ενημερώνουμε έγκαιρα όλους τους χρήστες του API σχετικά με πιθανές αλλαγές.</strong></p>
 		
-		<h3>Ergebnis</h3>
+		<h2><a name="xml">Αναζήτηση για XML</a></h2>
 		
-		<p>Das Ergebnis der Anfrage ist eine XML-Datei mit folgendem Format:</p>
+		<p>Με την παρακάτω αίτηση HTTP μπορούν να αναζητηθούν όλες οι ομάδες συνωνύμων που περιέχουν
+		τη λέξη <span class="bsp">δοκιμή</span>:</p>
+		
+		<pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=δοκιμή&amp;format=text/xml">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>δοκιμή</strong>&amp;format=text/xml</a></pre>
+
+        <p>Σημείωση: οι ελληνικοί χαρακτήρες πρέπει να είναι κωδικοποιημένοι με UTF-8.</p>
+		
+		<h3>Αποτέλεσμα</h3>
+		
+		<p>Το αποτέλεσμα της αναζήτησης είναι ένα XML έγγραφο με την ακόλουθη μορφή:</p>
 
         <%-- Use geshi (like on languagetool.org/development/ for highlighting: --%>
 <pre class="api"><span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;matches<span style="font-weight: bold; color: black;">&gt;</span></span></span>
@@ -52,121 +51,124 @@
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;warning</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;WARNING -- this XML format may be extended without warning&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;copyright</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;Copyright (C) 2011 Daniel Naber (www.danielnaber.de)&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;license</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;GNU LESSER GENERAL PUBLIC LICENSE Version 2.1&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
-&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;source</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;http://www.openthesaurus.de&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;source</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;http://www.openthesaurus.gr&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;date</span> <span style="color: #000066;">content</span>=<span style="color: #bb0000;">&quot;Sat Mar 06 22:47:25 CET 2011&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/metaData<span style="font-weight: bold; color: black;">&gt;</span></span></span>
 &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;synset</span> <span style="color: #000066;">id</span>=<span style="color: #bb0000;">&quot;1234&quot;</span><span style="font-weight: bold; color: black;">&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;categories<span style="font-weight: bold; color: black;">&gt;</span></span></span>
-&nbsp; &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;category</span> <span style="color: #000066;">name</span>=<span style="color: #bb0000;">&quot;Name der Kategorie&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp; &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;category</span> <span style="color: #000066;">name</span>=<span style="color: #bb0000;">&quot;Όνομα Κατηγορίας&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/categories<span style="font-weight: bold; color: black;">&gt;</span></span></span>
-&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Bedeutung 1, Wort 1&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
-&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Bedeutung 1, Wort 2&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Έννοια 1, Λέξη 1&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Έννοια 1, Λέξη 2&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/synset<span style="font-weight: bold; color: black;">&gt;</span></span></span>
 &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;synset</span> <span style="color: #000066;">id</span>=<span style="color: #bb0000;">&quot;2345&quot;</span><span style="font-weight: bold; color: black;">&gt;</span></span>
 &nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;categories</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
-&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Bedeutung 2, Wort 1&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp; &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;term</span> <span style="color: #000066;">term</span>=<span style="color: #bb0000;">&quot;Έννοια 2, Λέξη 1&quot;</span><span style="font-weight: bold; color: black;">/&gt;</span></span>
 &nbsp; <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/synset<span style="font-weight: bold; color: black;">&gt;</span></span></span>
 <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/matches<span style="font-weight: bold; color: black;">&gt;</span></span></span></pre>
 
 
-        <h2><a name="json">Suchanfrage für JSON</a></h2>
+        <h2><a name="json">Αναζήτηση για JSON</a></h2>
         
-        <p>Statt <span class="apioption">text/xml</span> kann <span class="apioption">application/json</span>
-        angegeben werden, um das Ergebnis im JSON-Format zu erhalten.</p>
+        <p>Αντί για <span class="apioption">text/xml</span> μπορεί να δοθεί <span class="apioption">application/json</span>
+        ώστε το αποτέλεσμα να ληφθεί σε μορφή JSON.</p>
         
-        <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=test&amp;format=application/json">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>test</strong>&amp;format=application/json</a></pre>
+        <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=δοκιμή&amp;format=application/json">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>δοκιμή</strong>&amp;format=application/json</a></pre>
 
         <g:render template="jsonWarning"/>
         
 
-        <h2><a name="jsonp">Suchanfrage für JSONP</a></h2>
+        <h2><a name="jsonp">Αναζήτηση για JSONP</a></h2>
         
-        <p>Mit der Übergabe einer Callback-Methode kann der JSON-Code als Parameter einer Funktion übergeben werden.
-        <g:link action="jsonpExample">Eine Beispiel-Seite</g:link>.</p>
+        <p>Με την ανάθεση μιας μεθόδου callback μπορεί ο κώδικας JSON να παραδοθεί ως παράμετρος μιας συνάρτησης.
+        <g:link action="jsonpExample">Ένα παράδειγμα ερώτησης;</g:link>.</p>
 
-        <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=test&amp;format=application/json&amp;callback=myCallback">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/<br/>search?q=<strong>test</strong>&amp;format=application/json&amp;callback=myCallback</a></pre>
+        <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=δοκιμή&amp;format=application/json&amp;callback=myCallback">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/<br/>search?q=<strong>δοκιμή</strong>&amp;format=application/json&amp;callback=myCallback</a></pre>
         
         <g:render template="jsonWarning"/>
 
 
-        <h2><a name="optionen">Optionen</a></h2>
+        <h2><a name="options">Επιλογές</a></h2>
 
         <ul class="apioptions">
-          <li><span class="apioption">format=text/xml</span> oder <span class="apioption">format=application/json</span>: Aktiviert den API-Modus, so dass 
-          die Antwort als XML bzw. JSON zurückgeliefert wird.</li>
-          <li><span class="apioption">callback</span>: siehe <a href="#jsonp">JSONP</a></li>
-          <li><span class="apioption">similar=true</span>: Hiermit werden bei jeder Antwort auch bis zu fünf
-          ähnlich geschriebene Wörter zurückgegeben. Dies ist nützlich, um dem User einen Vorschlag im Falle eines möglichen
-          Tippfehlers machen zu können. Beispielanfrage:
+          <li><span class="apioption">format=text/xml</span> ή <span class="apioption">format=application/json</span>: Ρυθμίζει
+          το αν η απάντηση θα είναι σε μορφή XML ή JSON</li>
+          <li><span class="apioption">callback</span>: Βλέπε <a href="#jsonp">JSONP</a></li>
+          <li><span class="apioption">similar=true</span>: Με αυτή την παράμετρο δίνονται σε κάθε απάντηση επίσης έως 5 λέξεις
+          με παρόμοια ορθογραφία, κάτι που χρησιμεύει στην αντιμετώπιση τυχόν λαθών πληκτρολόγησης
 
-          <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=Umstant&amp;format=text/xml&amp;similar=true">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>Umstant</strong>&amp;format=text/xml&amp;similar=true</a></pre>
+          <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=ρόδα&amp;format=text/xml&amp;similar=true">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>ρόδα</strong>&amp;format=text/xml&amp;similar=true</a></pre>
 
-          Antwort (Ausschnitt):
+          Απάντηση (Απόσπασμα):
 
 <pre class="api">
 &lt;similarterms>
-  &lt;term term="Umstand" distance="1"/>
-  &lt;term term="(zeitlicher) Abstand" distance="3"/>
-  &lt;term term="Abstand" distance="3"/>
-  &lt;term term="amüsant" distance="3"/>
-  &lt;term term="Anstalt" distance="3"/>
+  &lt;term term="έριδα" distance="2"/>
+  &lt;term term="αράδα" distance="2"/>
+  &lt;term term="δάδα" distance="2"/>
+  &lt;term term="δόξα" distance="2"/>
+  &lt;term term="κόρδα" distance="2"/>
 &lt;/similarterms>
 </pre>
-          <tt>distance</tt> gibt den Levenshtein-Abstand zum Suchwort an (Wörter in Klammern werden dabei ignoriert).
-            Die Wörter sind bereits nach diesem Abstand sortiert. Es werden nur Wörter vorgeschlagen, die auch
-            in OpenThesaurus vorhanden sind.
+          <tt>distance</tt> δίνει την απόσταση Levenshtein από τη λέξη αναζήτησης (οι
+            προσδιορισμοί σε παρένθεση αγνοούνται στον υπολογισμό). Οι λέξεις ιεραρχούνται
+            με βάση αυτή την απόσταση. Προτείνονται μόνο λέξεις που υπάρχουν στον OpenThesaurus.gr.
           </li>
-          <li><span class="apioption">substring=true</span>: Hiermit werden bei jeder Antwort auch bis zu zehn Wörter
-          zurückgegeben, die den Suchbegriff nur als Teilwort beinhalten. Beispielanfrage:
+          <li><span class="apioption">substring=true</span>: Με αυτή την παράμετρο δίνονται σε κάθε
+          σπάντηση έως 10 λέξεις που εμπεριέχουν την αναζητούμενη συμβολοσειρά ως συνθετικό. Ερώτηση
+          (για παράδειγμα):
 
-            <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=Hand&amp;format=text/xml&amp;substring=true">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>Hand</strong>&amp;format=text/xml&amp;substring=true</a></pre>
+            <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=πανω&amp;format=text/xml&amp;substring=true">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>πανω</strong>&amp;format=text/xml&amp;substring=true</a></pre>
 
-            Antwort (Ausschnitt):
+            Απάντηση (Απόσπασμα):
 
 <pre class="api">
 &lt;substringterms>
-  &lt;term term="(etwas) behandeln"/>
-  &lt;term term="abhandeln"/>
+  &lt;term term="αδαπάνως"/>
+  &lt;term term="απανωτοί"/>
+  &lt;term term="δαπανώ"/>
+  &lt;term term="πανώγραμμα/>
+  &lt;term term="τραβώ επάνω"/>
 &lt;/substringterms>
 </pre>
           </li>
 
-          <li><span class="apioption">substringFromResults</span>: Gibt an, ab welchem Eintrag die Teilwort-Treffer
-          zurückgegeben werden sollen. Funktioniert nur zusammen mit <span class="apioption">substring=true</span>.
-          Standardwert ist 0, also ab der ersten Position.</li>
+          <li><span class="apioption">substringFromResults</span>: Καθορίζει το από ποια καταχώριση και μετά
+          να επιστραφούν τα αποτελέσματα. Χρησιμοποιείται για "σελιδοποίηση" (paging) των αποτελεσμάτων, δηλ
+          για να μπορούν να ζητηθούν π.χ., τα "αποτελέσματα από τη θέση 5 και μετά". Δουλεύει μόνο μαζί με
+          <span class="apioption">substring=true</span>. Η προεπιλογή είναι το 0, δηλαδή επιστρέφονται τα
+          αποτελέσματα ξεκινώντας από το πρώτο.</li>
 
-          <li><span class="apioption">substringMaxResults</span>: Gibt an, wie viele Teilwort-Treffer insgesamt
-          zurückgegeben werden sollen. Funktioniert nur zusammen mit <span class="apioption">substring=true</span>.
-          Der Standardwert ist 10, Maximalwert ist 250.</li>
+          <li><span class="apioption">substringMaxResults</span>: Καθορίζει τον μέγιστο αριθμό αποτελεσμάτων
+          που θα επιστραφούν (π.χ., "επέστρεψε το πολύ 5 αποτελέσματα"). Ο σκοπός είναι σε συνδυασμό με την
+          παραπάνω επιλογή επιτρέπει στην εφαρμογή που καλεί το API να κάνει σελιδοποίηση (paging).
+          Χρησιμοποιείται σε συνδυασμό με <span class="apioption">substring=true</span>. Η προεπιλεγμένη τιμή
+          είναι 10, το μέγιστο επιτρεπόμενο όριο είναι 250.</li>
 
-          <li><span class="apioption">startswith=true</span>: Wie <tt>substring=true</tt>, findet aber nur Wörter, die
-          mit dem angebenen Suchbegriff anfangen. Beschränkung der Treffer ähnlich wie bei <tt>substring</tt>,
-          aber mit <tt>startsWithFromResults</tt> und <tt>startsWithMaxResults</tt>.</li>
+          <li><span class="apioption">startswith=true</span>: Όπως το <tt>substring=true</tt>, αλλά επιστρέφει
+          μόνο λέξεις που ξεκινούν με τον όρο αναζήτησης (μόνο αυτές δηλαδή στις οποίες ο όρος που αναζητήθηκε
+          είναι πρώτο συνθετικό. Ο περιορισμός του αριθμού των αποτελεσμάτων (paging) γίνεται όπως στο
+          <tt>substring</tt>, με χρήση <tt>startsWithFromResults</tt> και <tt>startsWithMaxResults</tt>.</li>
 
-          <li><span class="apioption">supersynsets=true</span>: Gibt an, dass zu jeder Synonymgruppe ihre
-          (optionalen) Oberbegriffe mitgeliefert werden <em>(seit August 2012, bisher nur für XML)</em>.</li>
+          <li><span class="apioption">supersynsets=true</span>: Επιστρέφει με κάθε ομάδα συνωνύμων τα υπέρνυμά
+          της (supersynsets / γενικότερες έννοιες) <em>(υποστηρίζεται μόνο σε XML ερωτήματα)</em>.</li>
 
-          <li><span class="apioption">subsynsets=true</span>: Gibt an, dass zu jeder Synonymgruppe ihre
-          (optionalen) Unterbegriffe mitgeliefert werden <em>(seit August 2012, bisher nur für XML)</em>.</li>
+          <li><span class="apioption">subsynsets=true</span>: Επιστρέφει με κάθε ομάδα συνωνύμων τα υπώνυμά της
+               (subsynsets / ειδικότερες έννοιες) <em>(υποστηρίζεται μόνο σε XML ερωτήματα)</em>.</li>
 
-          <li><span class="apioption">mode=all</span>: Aktiviert alle zusätzlichen Abfragen. Bisher sind das <tt>similar=true</tt>,
-            <tt>substring=true</tt>, <tt>supersynsets=true</tt> und <tt>subsynsets=true</tt>. Dieser Modus
-            sollte nur zum Testen benutzt werden, um einen Überblick über die Möglichkeiten zu bekommen.</li>
+          <li><span class="apioption">mode=all</span>: Ενεργοποιεί όλες τις πρόσθετες αναζητήσεις. Μέχρι στιγμής
+               αυτές είναι οι <tt>similar=true</tt>,
+            <tt>substring=true</tt>, <tt>supersynsets=true</tt> και <tt>subsynsets=true</tt>. Αυτή η κατάσταση
+            θα πρέπει να χρησιμοποιείται μόνο για δοκιμές, για μια γενική επισκόπηση των δυνατοτήτων.</li>
         </ul>
 
+        <h2><a name="limits">Όρια/Περιορισμοί στην ποσότητα των ερωτήσεων</a></h2>
 
-        <h2><a name="probleme">Bekannte Probleme</a></h2>
-
-        <p>Umlaute werden bei der Suche wie ihre nicht-Umlaute behandelt, so findet <span class="bsp">tur</span>
-            auch den Eintrag zu <span class="bsp">Tür</span> und umgekehrt.</p>
-
-        <h2><a name="limits">Anfrage-Limitierung</a></h2>
-
-        <p>Bei mehr als 60 Anfragen pro Minute von der gleichen IP-Adresse folgt eine Fehlermeldung (HTTP-Code 500).
-        Wer mehr Anfragen stellen möchte, kann <g:link action="imprint">uns kontaktieren</g:link> und um eine
-        Erhöhung des Limits bitten. Zusätzlich zur direkten Abfrage stehen weiterhin
-        <g:link action="download">Downloads</g:link> der Datenbank zur Verfügung. Statt Massenabfragen
-        über die API sollte dieser Download genutzt werden.</p>
+        <p>Περισσότερες από 60 ερωτήσεις μέσω του API ανά λεπτό ανά διεύθυνση IP έχουν ως αποτέλεσμα να επιστρέφεται
+        ο κωδικός λάθους  (HTTP-Code 500). Αν επιθυμείτε δυνατότητα για περισσότερα ερωτήματα μπορείτε να επικοινωνήσετε
+        μαζί μας και να ζητήσετε αύξηση του ορίου αυτού. Επίσης διατίθεται προς λήψη ένα αρχείο με την πλήρη βάση
+        δεδομένων του ιστοτόπου αυτού. Για εφαρμογές που χρειάζονται μεγάλο όγκο αναζητήσεων είναι προτιμότερο να
+        χρησιμοποιείται αυτό το αρχείο.</p>
 
     </body>
 </html>
