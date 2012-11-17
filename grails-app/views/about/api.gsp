@@ -115,7 +115,7 @@
             με βάση αυτή την απόσταση. Προτείνονται μόνο λέξεις που υπάρχουν στον OpenThesaurus.gr.
           </li>
           <li><span class="apioption">substring=true</span>: Με αυτή την παράμετρο δίνονται σε κάθε
-          σπάντηση έως 10 λέξεις που εμπεριέχουν την αναζητούμενη συμβολοσειρά ως συνθετικό. Ερώτηση
+          απάντηση έως 10 λέξεις που εμπεριέχουν την αναζητούμενη συμβολοσειρά ως συνθετικό. Ερώτηση
           (για παράδειγμα):
 
             <pre class="api"><a href="${createLinkTo(dir:'synonyme')}/search?q=πανω&amp;format=text/xml&amp;substring=true">${grailsApplication.config.thesaurus.serverURL}${createLinkTo(dir:'synonyme')}/search?q=<strong>πανω</strong>&amp;format=text/xml&amp;substring=true</a></pre>
@@ -150,7 +150,7 @@
           είναι πρώτο συνθετικό. Ο περιορισμός του αριθμού των αποτελεσμάτων (paging) γίνεται όπως στο
           <tt>substring</tt>, με χρήση <tt>startsWithFromResults</tt> και <tt>startsWithMaxResults</tt>.</li>
 
-          <li><span class="apioption">supersynsets=true</span>: Επιστρέφει με κάθε ομάδα συνωνύμων τα υπέρνυμά
+          <li><span class="apioption">supersynsets=true</span>: Επιστρέφει με κάθε ομάδα συνωνύμων τα υπερώνυμά
           της (supersynsets / γενικότερες έννοιες) <em>(υποστηρίζεται μόνο σε XML ερωτήματα)</em>.</li>
 
           <li><span class="apioption">subsynsets=true</span>: Επιστρέφει με κάθε ομάδα συνωνύμων τα υπώνυμά της
