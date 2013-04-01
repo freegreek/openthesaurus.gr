@@ -9,7 +9,7 @@ LOG=/tmp/openthesaurus-log.txt
 rm $OUT
 rm $LOG
 
-tail -n 250000 /home/dnaber/tomcat/logs/catalina.out | grep "$DATE" >$LOG
+tail -n 250000 /var/log/tomcat6/catalina.out | grep "$DATE" >$LOG
 
 echo -n "Web Searches: " >>$OUT
 grep -c "Search(ms):htm" $LOG >>$OUT
@@ -77,4 +77,4 @@ echo "" >>$OUT
 echo "Errors": >>$OUT
 grep "ERROR" $LOG >>$OUT
 
-head -n 1000 $OUT | mail -s "OpenThesaurus Status Mail" feedback@openthesaurus.de
+head -n 1000 $OUT | mail -s "OpenThesaurus Status Mail" feedback@openthesaurus.gr
