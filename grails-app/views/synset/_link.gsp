@@ -65,7 +65,7 @@
             </g:if>
          <div id="addSynset-${linkTypeName}" style="display:none;margin-top:5px">
             <g:textField name="q${linkTypeName}" value="" onkeypress="return doNotSubmitOnReturn(event);" onkeyup="return doSynsetSearchOnKeyUp(event, '${linkTypeName}', 'synset/ajaxSearch');" autocomplete="off"/>
-            <input type="hidden" name="linkType${linkTypeName}.id" value="${LinkType.findByLinkName(linkTypeName).id}">
+            <input type="hidden" name="linkType${linkTypeName}.id" value="${LinkType.findByLinkName(linkTypeName)?.id}">
             
             <span id="addSynsetProgress${linkTypeName}" style="visibility:hidden;position:absolute">
                 <img src="${createLinkTo(dir:'images',file:'spinner.gif')}" alt="Spinner image"
