@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BACKUP_DIR=/tmp
+db=openthesaurus
+
+file="${BACKUP_DIR}/${db}.${NOW}-$(date +\"%T\")"
+. /etc/mysql.passwd ;
+mysqldump --flush-logs --quote-names          \
+           -u ${OT_DB_USER} -p${OT_DB_PASSWD} \
+          --default-character-set=utf8        \
+           "$db" > "$file"

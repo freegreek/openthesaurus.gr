@@ -1,0 +1,25 @@
+#!/bin/bash
+set -eu
+
+export DIR=/tmp
+export WIKIBZ=$DIR/wiki.xml.bz2
+export DICTBZ=$DIR/dict.xml.bz2
+export WIKI=wiki.xml
+export DICT=dict.xml
+
+rm -f $DICTBZ
+wget http://dumps.wikimedia.org/elwiktionary/latest/elwiktionary-latest-pages-articles.xml.bz2 -O $DICTBZ
+bzip2 -d $DICTBZ
+pushd /tmp &>/dev/null
+java -cp /usr/local/bin WiktionaryDumper $DICT > $DIR/wiktionary.sql
+. /etc/mysql.passwd; mysql -u$OT_DB_USER -p$OT_DB_PASSWD openthesaurus < $DIR/wiktionary.sql
+popd &>/dev/null
+
+
+rm -f $WIKIBZ
+wget http://dumps.wikimedia.org/elwiki/latest/elwiki-latest-pages-articles.xml.bz2 -O $WIKIBZ
+bzip2 -d $WIKIBZ
+pushd /tmp &>/dev/null
+java -cp /usr/local/bin WikipediaLinkDumper $WIKI > $DIR/wikipedia.sql
+. /etc/mysql.passwd; mysql -u$OT_DB_USER -p$OT_DB_PASSWD openthesaurus < $DIR/wikipedia.sql
+popd &>/dev/null

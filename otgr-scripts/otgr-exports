@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# export the text format
+curl -s http://localhost:8080/exportText/run
+
+# export .oxt version
+curl -s http://localhost:8080/exportOxt/run
+
+# export an anonymized mysql dump
+OUT=/var/lib/tomcat6/webapps/ROOT/export/
+. /etc/mysql.passwd ; \
+mysqldump -u $OT_DB_USER -p$OT_DB_PASSWD                             \
+          --skip-opt --compatible=ansi                               \
+          --ignore-table=openthesaurus.wikipedia                     \
+          --ignore-table=openthesaurus.wiktionary                    \
+          --ignore-table=openthesaurus.thesaurus_user                \
+          --ignore-table=openthesaurus.thesaurus_configuration_entry \
+          --ignore-table=openthesaurus.duration_session              \
+          --ignore-table=openthesaurus.memwords                      \
+          --ignore-table=openthesaurus.user_event                    \
+          --default-character-set=utf8                               \
+          openthesaurus | gzip -9 > $OUT/openthesaurus.sql.gz
