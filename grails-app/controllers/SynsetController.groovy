@@ -25,6 +25,8 @@ import com.vionto.vithesaurus.tools.StringTools
 import org.apache.commons.lang.StringEscapeUtils
 import com.vionto.vithesaurus.tools.DbUtils
 
+import groovy.xml.StreamingMarkupBuilder
+
 class SynsetController extends BaseController {
 
     def requestLimiterService
@@ -266,7 +268,7 @@ class SynsetController extends BaseController {
                 def paramsList = []
                 for (param in params.keySet()) {
                     if (param != "callback") {
-                        paramsList.add(param + "=" + URLEncoder.encode(params[param], "utf-8"))
+                        paramsList.add(param + "=" + URLEncoder.encode(params[param], "UTF-8"))
                     }
                 }
                 def paramsString = StringUtils.join(paramsList, "&")
@@ -300,7 +302,11 @@ class SynsetController extends BaseController {
   private void renderApiResponseAsXml(def searchResult, List similarTerms, List substringTerms, List startsWithTerms) {
       // see http://jira.codehaus.org/browse/GRAILSPLUGINS-709 for a required
       // workaround with feed plugin 1.4 and Grails 1.1
-      render(contentType:"text/xml", encoding:"utf-8") {
+      //render(contentType:"text/xml", encoding:"UTF-8") {
+      def mb = new StreamingMarkupBuilder()
+      mb.encoding = "UTF-8"
+      def xml = mb.bind {
+	mkp.yieldUnescaped '<?xml version="1.0" encoding="UTF-8"?>'
         matches {
           metaData {
             apiVersion(content:"0.1.3")
@@ -392,6 +398,7 @@ class SynsetController extends BaseController {
           }
         }
       }
+      response.outputStream << xml
     }
 
     // NOTE: keep in sync with XML!
@@ -399,7 +406,7 @@ class SynsetController extends BaseController {
         // see http://jira.codehaus.org/browse/GRAILSPLUGINS-709 for a required
         // workaround with feed plugin 1.4 and Grails 1.1
 
-        render(contentType:"text/json", encoding:"utf-8") {
+        render(contentType:"text/json", encoding:"UTF-8") {
 
             metaData apiVersion: "0.2",
                 warning: "ATTENTION: before serious use contact feedback@openthesaurus.gr in order to be informed when API changes",
