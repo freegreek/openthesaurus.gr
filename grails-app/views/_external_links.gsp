@@ -10,11 +10,9 @@
       title="Πύλη Ελληνικής Γλώσσας"
      >Λεξικά</a>
 
-    <%--
     <span class="d">&middot;</span>
     <a href="http://lexicon.pathfinder.gr/?lookup=${q.encodeAsIsoURL()}" title="Ελληνικά-Αγγλικά">pathfinder lexicon</a>
 
-    <%--
     <span class="d">&middot;</span>
     <a href="http://www.google.gr/search?q=${q.encodeAsURL()}&amp;lr=lang_el" title="Αναζήτηση στο Web">Google</a>
 
